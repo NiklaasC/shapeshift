@@ -10,7 +10,7 @@ Shapeshifter.Player = function(game, x, y) {
   // game.physics.enable(sprite, Phaser.Physics.ARCADE);
   
   this.species = "shapeshifter"; // Or Mouse, Cat, Cucumber
-	this.velocity = 300;
+	this.velocity = 60;
   this.timeToPointer = 250;
 
 	//	Add this sprite to the game

@@ -12,7 +12,7 @@ Shapeshifter.Mouse = function(game, x, y, player, group) {
   this.species = "mouse";
   this.player = player;
   this.group = group;
-	this.velocity = 200;
+	this.velocity = 50;
   //this.timeToPointer = 250;
 
 	//	Add this sprite to the game
@@ -35,13 +35,15 @@ Shapeshifter.Mouse.prototype.update = function() {
     if( this.game.physics.arcade.distanceBetween(this, neighbour) < 32 ) {
       //  If the distance between the mouse and it's targets is pretty close ... it doesn't have to move!
         this.body.velocity.setTo(0,0);
+        neighbour.kill();
     } else {
       this.game.physics.arcade.moveToObject(this, neighbour, this.velocity);
     }
   } else {
+    // run!
     this.game.physics.arcade.moveToObject(this, neighbour, -this.velocity);
   }
-  
+  this.game.world.wrap(this, 0, false);
 };
 
 Shapeshifter.Mouse.prototype.closestNeighbour = function (callee, group, player) {
@@ -51,20 +53,25 @@ Shapeshifter.Mouse.prototype.closestNeighbour = function (callee, group, player)
   for (var search = 0; search < group.length; search++) {
 		// if they are not the entity doing the searching!
 		if (group.children[search] !== callee) {
-			// grab the distance
-			distance = this.game.physics.arcade.distanceBetween(this, group.children[search]);
-			if (!closestDistance) {
-				closestDistance = distance;
-				closest = group.children[search];
-			} else if (distance < closestDistance ) {
-				closestDistance = distance;
-				closest = group.children[search];
-			}
+      if(group.children[search].alive) {
+  			// grab the distance
+  			distance = this.game.physics.arcade.distanceBetween(this, group.children[search]);
+        // ignore your own species!
+        if (group.children[search].species !== this.species) {
+    			if (!closestDistance) {
+    				closestDistance = distance;
+    				closest = group.children[search];
+    			} else if (distance < closestDistance ) {
+    				closestDistance = distance;
+    				closest = group.children[search];
+    			}
+        }
+      }
 		}
   }
   
   // Remember to check Player!
-  if (this.game.physics.arcade.distanceBetween(this, player) < closestDistance ) {
+  if (this.game.physics.arcade.distanceBetween(this, player) < closestDistance && player.alive) {
     closestDistance = distance;
     closest = player;
   }
