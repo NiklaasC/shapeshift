@@ -1,5 +1,6 @@
+var Shapeshifter = Shapeshifter || {};
 
-BasicGame.Preloader = function (game) {
+Shapeshifter.Preloader = function (game) {
 
 	this.background = null;
 	this.preloadBar = null;
@@ -8,7 +9,7 @@ BasicGame.Preloader = function (game) {
 
 };
 
-BasicGame.Preloader.prototype = {
+Shapeshifter.Preloader.prototype = {
 
 	preload: function () {
 
@@ -24,10 +25,13 @@ BasicGame.Preloader.prototype = {
 
 		//	Here we load the rest of the assets our game needs.
 		//	As this is just a Project Template I've not provided these assets, swap them for your own.
-		this.load.image('titlepage', 'images/title.jpg');
-		this.load.atlas('playButton', 'images/play_button.png', 'images/play_button.json');
-		this.load.audio('titleMusic', ['audio/main_menu.mp3']);
-		this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
+		this.load.image('titlepage', 'res/title.png');
+    this.load.image('shapeshifter', 'res/shapeshifter.png');
+    this.load.image('mouse', 'res/mouse.png');
+    this.load.image('cat', 'res/cat.png');
+    this.load.image('cucumber', 'res/cucumber.png');
+		//this.load.audio('titleMusic', ['res/main_menu.mp3']);
+		//this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
 		//	+ lots of other required assets here
 
 	},
@@ -50,11 +54,11 @@ BasicGame.Preloader.prototype = {
 		//	If you don't have any music in your game then put the game.state.start line into the create function and delete
 		//	the update function completely.
 		
-		if (this.cache.isSoundDecoded('titleMusic') && this.ready == false)
-		{
+		//if (this.cache.isSoundDecoded('titleMusic') && this.ready == false)
+		//{
 			this.ready = true;
 			this.state.start('MainMenu');
-		}
+		//}
 
 	}
 

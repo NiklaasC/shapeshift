@@ -1,5 +1,6 @@
+var Shapeshifter = Shapeshifter || {};
 
-BasicGame.Game = function (game) {
+Shapeshifter.Game = function (game) {
 
     //  When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
 
@@ -22,21 +23,22 @@ BasicGame.Game = function (game) {
 
     //  You can use any of these from any function within this State.
     //  But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
-
 };
 
-BasicGame.Game.prototype = {
+Shapeshifter.Game.prototype = {
 
     create: function () {
-
+      
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-
+        this.add.sprite(0, 0, 'preloaderBackground');
+        
+        this.player = new Shapeshifter.Player(this.game, 150, 200)
     },
 
     update: function () {
 
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-
+        //  this.player.update();
     },
 
     quitGame: function (pointer) {
