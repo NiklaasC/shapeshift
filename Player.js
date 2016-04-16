@@ -20,10 +20,10 @@ Shapeshifter.Player.prototype = Object.create(Phaser.Sprite.prototype);
 Shapeshifter.Player.prototype.constructor = Shapeshifter.Player;
 Shapeshifter.Player.prototype.update = function() {
 	//	Handle player input
-  if (this.game.input.mousePointer.isDown)
+  if (this.game.input.activePointer.isDown)
     {
         //  400 is the speed it will move towards the mouse
-        this.game.physics.arcade.moveToPointer(this, this.velocity, this.game.input.mousePointer, this.timeToPointer);
+        this.game.physics.arcade.moveToPointer(this, this.velocity, this.game.input.activePointer, this.timeToPointer);
 
         //  if it's overlapping the mouse, don't move any more
       if(  this.game.physics.arcade.distanceToPointer(this) < 10) {
