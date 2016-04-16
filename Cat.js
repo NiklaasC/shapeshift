@@ -2,7 +2,7 @@ var Shapeshifter = Shapeshifter || {};
 
 Shapeshifter.Cat = function(game, x, y, player, group) {
 	//	Create sprite
-	Phaser.Sprite.call(this, game, x, y, "cat");
+	Phaser.Sprite.call(this, game, x, y, 'entities', 2);
   
 	//	Sprite info
 	this.anchor.setTo(0.5, 0.5);
@@ -12,7 +12,7 @@ Shapeshifter.Cat = function(game, x, y, player, group) {
   this.species = "cat";
   this.player = player;
     this.group = group;
-	this.velocity = 40;
+	this.velocity = 75;
   //this.timeToPointer = 250;
 
   //	Add this sprite to the game

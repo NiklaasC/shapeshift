@@ -26,10 +26,8 @@ Shapeshifter.Preloader.prototype = {
 		//	Here we load the rest of the assets our game needs.
 		//	As this is just a Project Template I've not provided these assets, swap them for your own.
 		this.load.image('titlepage', 'res/title.png');
-    this.load.image('shapeshifter', 'res/shapeshifter.png');
-    this.load.image('mouse', 'res/mouse.png');
-    this.load.image('cat', 'res/cat.png');
-    this.load.image('cucumber', 'res/cucumber.png');
+    this.load.spritesheet('entities', 'res/entities.png', 64, 64, 5);
+    
 		//this.load.audio('titleMusic', ['res/main_menu.mp3']);
 		//this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
 		//	+ lots of other required assets here

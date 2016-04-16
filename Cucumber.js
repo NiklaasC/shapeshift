@@ -2,7 +2,7 @@ var Shapeshifter = Shapeshifter || {};
 
 Shapeshifter.Cucumber = function(game, x, y, player, group) {
 	//	Create sprite
-	Phaser.Sprite.call(this, game, x, y, "cucumber");
+	Phaser.Sprite.call(this, game, x, y, 'entities', 0);
   
 	//	Sprite info
 	this.anchor.setTo(0.5, 0.5);
@@ -12,7 +12,7 @@ Shapeshifter.Cucumber = function(game, x, y, player, group) {
   this.species = "cucumber";
   this.player = player;
   this.group = group;
-	this.velocity = 30;
+	this.velocity = 75;
   
   //this.timeToPointer = 250;
 

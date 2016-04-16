@@ -2,7 +2,7 @@ var Shapeshifter = Shapeshifter || {};
 
 Shapeshifter.Player = function(game, x, y) {
 	//	Create sprite
-	Phaser.Sprite.call(this, game, x, y, "shapeshifter");
+	Phaser.Sprite.call(this, game, x, y, 'entities', 3);
   
 	//	Sprite info
 	this.anchor.setTo(0.5, 0.5);
@@ -12,8 +12,11 @@ Shapeshifter.Player = function(game, x, y) {
   this.species = "shapeshifter"; // Or Mouse, Cat, Cucumber
 	this.velocity = 60;
   this.timeToPointer = 250;
+  
+  
+  this.game.time.events.add(Phaser.Timer.SECOND * 3, this.shapeshift, this);
 
-	//	Add this sprite to the game
+	// 	Add this sprite to the game
 	this.game.add.existing(this);
 };
 
@@ -40,4 +43,30 @@ Shapeshifter.Player.prototype.update = function() {
     {
        this.body.velocity.setTo(0, 0);
     }
+};
+Shapeshifter.Player.prototype.shapeshift = function () {
+  var shift = this.game.rnd.integerInRange(0, 3)
+  switch (shift) {
+    case 0:
+      this.species = "cucumber";
+      this.frame = 0;
+      break;
+    case 1:
+      this.species = "mouse";
+      this.frame = 1;
+      break;
+    case 2:
+      this.species = "cat";
+      this.frame = 2;
+      break;
+    case 3:
+      this.species = "shapeshifter";
+      this.frame = 3;
+      break;
+    default:
+      this.species = "shapeshifter";
+      this.frame = 3;
+  }
+  this.updateCrop();
+  this.game.time.events.add(Phaser.Timer.SECOND * 3, this.shapeshift, this);
 };

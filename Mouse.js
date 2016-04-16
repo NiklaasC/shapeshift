@@ -2,7 +2,7 @@ var Shapeshifter = Shapeshifter || {};
 
 Shapeshifter.Mouse = function(game, x, y, player, group) {
 	//	Create sprite
-	Phaser.Sprite.call(this, game, x, y, "mouse");
+	Phaser.Sprite.call(this, game, x, y, 'entities', 1);
   
 	//	Sprite info
 	this.anchor.setTo(0.5, 0.5);
@@ -12,7 +12,7 @@ Shapeshifter.Mouse = function(game, x, y, player, group) {
   this.species = "mouse";
   this.player = player;
   this.group = group;
-	this.velocity = 50;
+	this.velocity = 75;
   //this.timeToPointer = 250;
 
 	//	Add this sprite to the game

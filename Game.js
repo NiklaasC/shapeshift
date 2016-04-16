@@ -33,14 +33,20 @@ Shapeshifter.Game.prototype = {
         this.add.sprite(0, 0, 'preloaderBackground');
         
         // 640, 360
-        this.world.setBounds(-16, -16, 672, 392);
+        this.world.setBounds(-32, -32, 688, 408);
+        
+        
+        this.trigger = false;
         //this.cucumberGroup = this.add.group();
         //this.mouseGroup = this.add.group();
         //this.catGroup = this.add.group();
+        this.collectableGroup = this.add.group();
         this.entityGroup = this.add.group();
-        
+        this.score = 0;
                 
         this.player = new Shapeshifter.Player(this.game, 320, 180);
+        
+        this.collectable = new Shapeshifter.Collectable(this.game, this.game.rnd.integerInRange(0, 640), this.game.rnd.integerInRange(0, 360), this.player,this.collectableGroup, this.score);
         
         this.cucumber = new Shapeshifter.Cucumber(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
         this.mouse = new Shapeshifter.Mouse(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
@@ -87,7 +93,13 @@ Shapeshifter.Game.prototype = {
           }
       	}
         if ( this.player.alive === false) {
-          // End game?
+          // End game!?
+          if (this.input.activePointer.isUp) {
+            this.trigger = true;
+          }
+          if (this.input.activePointer.isDown && this.trigger){
+            this.state.start('MainMenu');
+          }
         }
     },
     spawn: function (entity) {
