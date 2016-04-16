@@ -24,7 +24,7 @@ Shapeshifter.MainMenu.prototype = {
 	update: function () {
 
 		//	Do some nice funky main menu effect here
-    if(this.input.mousePointer.isDown) {
+    if(this.input.activePointer.isDown) {
       this.startGame();
     }
 
