@@ -98,7 +98,7 @@ Shapeshifter.Game.prototype = {
             this.trigger = true;
           }
           if (this.input.activePointer.isDown && this.trigger){
-            this.state.start('MainMenu');
+            this.state.start('Game');
           }
         }
     },

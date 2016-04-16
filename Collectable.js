@@ -21,7 +21,7 @@ Shapeshifter.Collectable = function(game, x, y, player, group, score) {
 Shapeshifter.Collectable.prototype = Object.create(Phaser.Sprite.prototype);
 Shapeshifter.Collectable.prototype.constructor = Shapeshifter.Collectable;
 Shapeshifter.Collectable.prototype.update = function() {
-  if (this.game.physics.arcade.distanceBetween(this, this.player) < 16) {
+  if (this.game.physics.arcade.distanceBetween(this, this.player) < 32) {
     this.kill();
     this.score += 1;
   }

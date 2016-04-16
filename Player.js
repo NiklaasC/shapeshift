@@ -45,7 +45,7 @@ Shapeshifter.Player.prototype.update = function() {
     }
 };
 Shapeshifter.Player.prototype.shapeshift = function () {
-  var shift = this.game.rnd.integerInRange(0, 3)
+  var shift = this.game.rnd.integerInRange(0, 3);
   switch (shift) {
     case 0:
       this.species = "cucumber";
@@ -67,6 +67,6 @@ Shapeshifter.Player.prototype.shapeshift = function () {
       this.species = "shapeshifter";
       this.frame = 3;
   }
-  this.updateCrop();
-  this.game.time.events.add(Phaser.Timer.SECOND * 3, this.shapeshift, this);
+  var nextShift = this.game.rnd.integerInRange(3,5)
+  this.game.time.events.add(Phaser.Timer.SECOND * nextShift, this.shapeshift, this);
 };

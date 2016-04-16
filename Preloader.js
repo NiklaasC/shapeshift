@@ -16,7 +16,7 @@ Shapeshifter.Preloader.prototype = {
 		//	These are the assets we loaded in Boot.js
 		//	A nice sparkly background and a loading progress bar
 		this.background = this.add.sprite(0, 0, 'preloaderBackground');
-		this.preloadBar = this.add.sprite(300, 400, 'preloaderBar');
+		this.preloadBar = this.add.sprite(169, 120, 'preloaderBar');
 
 		//	This sets the preloadBar sprite as a loader sprite.
 		//	What that does is automatically crop the sprite from 0 to full-width
@@ -27,6 +27,12 @@ Shapeshifter.Preloader.prototype = {
 		//	As this is just a Project Template I've not provided these assets, swap them for your own.
 		this.load.image('titlepage', 'res/title.png');
     this.load.spritesheet('entities', 'res/entities.png', 64, 64, 5);
+    this.load.image('endgame', 'res/endgame.png');
+    this.load.image('cucumberLarge', 'res/cucumber_large.png');
+    this.load.image('mouseLarge', 'res/mouse_large.png');
+    this.load.image('catLarge', 'res/cat_large.png');
+    this.load.image('shardLarge', 'res/shard_large.png');
+    this.load.image('shapeLarge', 'res/shape_large.png');
     
 		//this.load.audio('titleMusic', ['res/main_menu.mp3']);
 		//this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
