@@ -32,7 +32,18 @@ Shapeshifter.Game.prototype = {
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         this.add.sprite(0, 0, 'preloaderBackground');
         
-        this.player = new Shapeshifter.Player(this.game, 150, 200)
+        //this.cucumberGroup = this.add.group();
+        //this.mouseGroup = this.add.group();
+        //this.catGroup = this.add.group();
+        this.entityGroup = this.add.group();
+                
+        this.player = new Shapeshifter.Player(this.game, 150, 200);
+        
+        this.cucumber = new Shapeshifter.Cucumber(this.game, 350,280, this.player, this.entityGroup);
+        this.mouse = new Shapeshifter.Mouse(this.game, 200,250, this.player, this.entityGroup);
+        this.cat = new Shapeshifter.Cat(this.game, 400,100, this.player, this.entityGroup);
+        
+        
     },
 
     update: function () {

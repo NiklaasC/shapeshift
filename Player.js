@@ -8,7 +8,8 @@ Shapeshifter.Player = function(game, x, y) {
 	this.anchor.setTo(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
   // game.physics.enable(sprite, Phaser.Physics.ARCADE);
-
+  
+  this.species = "shapeshifter"; // Or Mouse, Cat, Cucumber
 	this.velocity = 300;
   this.timeToPointer = 250;
 
