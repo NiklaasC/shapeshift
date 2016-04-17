@@ -15,6 +15,8 @@ Shapeshifter.Player = function(game, x, y) {
   this.deathBy;
   this.score = 0;
   
+  this.shift = this.game.add.audio('shift');
+  
   this.game.time.events.add(Phaser.Timer.SECOND * 3, this.shapeshift, this);
 
 	// 	Add this sprite to the game
@@ -70,4 +72,7 @@ Shapeshifter.Player.prototype.shapeshift = function () {
   }
   var nextShift = this.game.rnd.integerInRange(3,5)
   this.game.time.events.add(Phaser.Timer.SECOND * nextShift, this.shapeshift, this);
+  if (this.alive) {
+    this.shift.play();
+  }
 };

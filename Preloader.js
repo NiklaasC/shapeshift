@@ -41,6 +41,12 @@ Shapeshifter.Preloader.prototype = {
     this.load.image('oopsMessage', 'res/oops_message.png');
     this.load.image('doneitMessage', 'res/doneit_message.png');
     
+    this.load.audio('plip', 'res/Muted.wav');
+    this.load.audio('shift', 'res/DOOK.wav');
+    this.load.audio('failed', 'res/BEND.wav');
+    this.load.audio('pickup', 'res/DOO.wav');
+    this.load.audio('win', 'res/woo.wav');
+    
 		//this.load.audio('titleMusic', ['res/main_menu.mp3']);
 		//this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
 		//	+ lots of other required assets here

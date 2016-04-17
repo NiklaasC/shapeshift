@@ -36,6 +36,12 @@ Shapeshifter.Game.prototype = {
         this.world.setBounds(-32, -32, 688, 408);
         
         
+        //audio
+        this.killNoise = this.game.add.audio('plip');
+        this.failNoise = this.game.add.audio('failed');
+        this.winNoise = this.game.add.audio('win');
+        
+        
         this.gameState = 'preplay';
         // preplay, play, transition, gameover, gameinit
         //this.cucumberGroup = this.add.group();
@@ -107,11 +113,13 @@ Shapeshifter.Game.prototype = {
       		// if dead ... kill!
           if (this.entityGroup.children[search].alive === false) {
             // Recycle
+            this.killNoise.play();
             this.spawn(this.entityGroup.children[search]);
           }
       	}
         if (this.player.score >= 10 && this.gameState === 'play') {
           // this.player.kill();
+          this.winNoise.play();
           this.gameState = 'transition';
           this.game.add.tween(this.fader).to( { alpha: 0.8 }, 2000, Phaser.Easing.Linear.None, true, 0);
           this.game.time.events.add(Phaser.Timer.SECOND * 2, this.gameoverState, this);
@@ -121,6 +129,7 @@ Shapeshifter.Game.prototype = {
         }
         
         if ( this.player.alive === false && this.gameState === 'play') {
+          this.failNoise.play();
           this.gameState = 'transition';
           this.game.add.tween(this.fader).to( { alpha: 0.8 }, 2000, Phaser.Easing.Linear.None, true, 0);
           this.game.add.tween(this.messageReplay).to( { y: 280 }, 2000, Phaser.Easing.Bounce.Out, true, 0);
