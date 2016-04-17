@@ -7,18 +7,14 @@ Shapeshifter.Cat = function(game, x, y, player, group) {
 	//	Sprite info
 	this.anchor.setTo(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
-  // game.physics.enable(sprite, Phaser.Physics.ARCADE);
 
   this.species = "cat";
   this.player = player;
   this.group = group;
 	this.velocity = 75;
-  //this.timeToPointer = 250;
   
   this.killedPlayer = this.game.add.audio('death');
-
-  //	Add this sprite to the game
-	// this.game.add.existing(this);
+  
   //  Add it to the group!
   this.group.add(this);
 };
@@ -26,7 +22,6 @@ Shapeshifter.Cat = function(game, x, y, player, group) {
 Shapeshifter.Cat.prototype = Object.create(Phaser.Sprite.prototype);
 Shapeshifter.Cat.prototype.constructor = Shapeshifter.Cat;
 Shapeshifter.Cat.prototype.update = function() {
-  //	Handle input
   var neighbour = this.closestNeighbour(this, this.group, this.player);
   
   if ( (neighbour.species === "shapeshifter") || (neighbour.species === "mouse") ) {
@@ -69,12 +64,10 @@ Shapeshifter.Cat.prototype.closestNeighbour = function (callee, group, player) {
       }
 		}
   }
-  
   // Remember to check Player!
   if (this.game.physics.arcade.distanceBetween(this, player) < closestDistance && player.alive) {
     closestDistance = distance;
     closest = player;
   }
-  
   return closest;
 };

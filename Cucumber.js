@@ -7,19 +7,14 @@ Shapeshifter.Cucumber = function(game, x, y, player, group) {
 	//	Sprite info
 	this.anchor.setTo(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
-  // game.physics.enable(sprite, Phaser.Physics.ARCADE);
   
   this.species = "cucumber";
   this.player = player;
   this.group = group;
 	this.velocity = 75;
-  this.currentStatus = 'go'; // Go ... wait ... go
-  //this.timeToPointer = 250;
   
   this.killedPlayer = this.game.add.audio('death');
-  
-  //	Add this sprite to the game
-	// this.game.add.existing(this);
+
   //  Add it to the group!
   this.group.add(this);
 };

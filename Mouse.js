@@ -7,18 +7,13 @@ Shapeshifter.Mouse = function(game, x, y, player, group) {
 	//	Sprite info
 	this.anchor.setTo(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
-  // game.physics.enable(sprite, Phaser.Physics.ARCADE);
   
   this.species = "mouse";
   this.player = player;
   this.group = group;
 	this.velocity = 75;
-  //this.timeToPointer = 250;
-  
   this.killedPlayer = this.game.add.audio('death');
-
-	//	Add this sprite to the game
-	// this.game.add.existing(this);
+  
   //  Add it to the group!
   this.group.add(this);
 };
@@ -26,12 +21,9 @@ Shapeshifter.Mouse = function(game, x, y, player, group) {
 Shapeshifter.Mouse.prototype = Object.create(Phaser.Sprite.prototype);
 Shapeshifter.Mouse.prototype.constructor = Shapeshifter.Mouse;
 Shapeshifter.Mouse.prototype.update = function() {
-	//	Handle input
   //  See what the closest thing is .. then react to it!
   //  Make sure to exclude self!
   var neighbour = this.closestNeighbour(this, this.group, this.player);
-  
-  
   
   if ( (neighbour.species === "shapeshifter") || (neighbour.species === "cucumber") ) {
     if( this.game.physics.arcade.distanceBetween(this, neighbour) < 32 ) {
@@ -75,12 +67,10 @@ Shapeshifter.Mouse.prototype.closestNeighbour = function (callee, group, player)
       }
 		}
   }
-  
   // Remember to check Player!
   if (this.game.physics.arcade.distanceBetween(this, player) < closestDistance && player.alive) {
     closestDistance = distance;
     closest = player;
   }
-  
   return closest;
 };

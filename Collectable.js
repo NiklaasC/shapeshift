@@ -7,7 +7,6 @@ Shapeshifter.Collectable = function(game, x, y, player, group, score) {
 	//	Sprite info
 	this.anchor.setTo(0.5, 0.5);
 	this.game.physics.arcade.enable(this);
-  // game.physics.enable(sprite, Phaser.Physics.ARCADE);
   
   this.player = player;
   this.group = group;
@@ -15,7 +14,6 @@ Shapeshifter.Collectable = function(game, x, y, player, group, score) {
   this.pickup = this.game.add.audio('pickup');
   
   //	Add this sprite to the game
-	//  this.game.add.existing(this);
   this.group.add(this);
 };
 
