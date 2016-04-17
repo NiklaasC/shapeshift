@@ -11,7 +11,6 @@ Shapeshifter.Collectable = function(game, x, y, player, group, score) {
   
   this.player = player;
   this.group = group;
-  this.score = score;
   
   //	Add this sprite to the game
 	//  this.game.add.existing(this);
@@ -23,7 +22,7 @@ Shapeshifter.Collectable.prototype.constructor = Shapeshifter.Collectable;
 Shapeshifter.Collectable.prototype.update = function() {
   if (this.game.physics.arcade.distanceBetween(this, this.player) < 32) {
     this.kill();
-    this.score += 1;
+    this.player.score += 1;
   }
   
   if (this.alive === false) {

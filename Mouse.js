@@ -36,6 +36,9 @@ Shapeshifter.Mouse.prototype.update = function() {
       //  If the distance between the mouse and it's targets is pretty close ... it doesn't have to move!
         this.body.velocity.setTo(0,0);
         neighbour.kill();
+        if (neighbour === this.player) {
+          this.player.deathBy = 'mouse';
+        }
     } else {
       this.game.physics.arcade.moveToObject(this, neighbour, this.velocity);
     }

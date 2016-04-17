@@ -13,9 +13,10 @@ Shapeshifter.Cucumber = function(game, x, y, player, group) {
   this.player = player;
   this.group = group;
 	this.velocity = 75;
-  
+  this.currentStatus = 'go'; // Go ... wait ... go
   //this.timeToPointer = 250;
-
+  
+  
   //	Add this sprite to the game
 	// this.game.add.existing(this);
   //  Add it to the group!
@@ -32,6 +33,9 @@ Shapeshifter.Cucumber.prototype.update = function() {
       //  If the distance between the mouse and it's targets is pretty close ... it doesn't have to move!
         this.body.velocity.setTo(0,0);
         neighbour.kill(); // mark to kill in next process!
+        if (neighbour === this.player) {
+          this.player.deathBy = 'cucumber';
+        }
     } else {
       this.game.physics.arcade.moveToObject(this, neighbour, this.velocity);
     }

@@ -9,10 +9,11 @@ Shapeshifter.Player = function(game, x, y) {
 	this.game.physics.arcade.enable(this);
   // game.physics.enable(sprite, Phaser.Physics.ARCADE);
   
-  this.species = "shapeshifter"; // Or Mouse, Cat, Cucumber
+  this.species = 'shapeshifter'; // Or Mouse, Cat, Cucumber
 	this.velocity = 60;
   this.timeToPointer = 250;
-  
+  this.deathBy;
+  this.score = 0;
   
   this.game.time.events.add(Phaser.Timer.SECOND * 3, this.shapeshift, this);
 

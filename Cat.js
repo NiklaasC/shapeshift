@@ -11,7 +11,7 @@ Shapeshifter.Cat = function(game, x, y, player, group) {
 
   this.species = "cat";
   this.player = player;
-    this.group = group;
+  this.group = group;
 	this.velocity = 75;
   //this.timeToPointer = 250;
 
@@ -32,6 +32,9 @@ Shapeshifter.Cat.prototype.update = function() {
       //  If the distance between the mouse and it's targets is pretty close ... it doesn't have to move!
         this.body.velocity.setTo(0,0);
         neighbour.kill();
+        if (neighbour === this.player) {
+          this.player.deathBy = 'cat';
+        }
     } else {
       this.game.physics.arcade.moveToObject(this, neighbour, this.velocity);
     }

@@ -34,6 +34,13 @@ Shapeshifter.Preloader.prototype = {
     this.load.image('shardLarge', 'res/shard_large.png');
     this.load.image('shapeLarge', 'res/shape_large.png');
     
+    this.load.image('replayMessage', 'res/replay_message.png');
+    this.load.image('cucumberMessage', 'res/cucumber_message.png');
+    this.load.image('mouseMessage', 'res/mouse_message.png');
+    this.load.image('catMessage', 'res/cat_message.png');
+    this.load.image('oopsMessage', 'res/oops_message.png');
+    this.load.image('doneitMessage', 'res/doneit_message.png');
+    
 		//this.load.audio('titleMusic', ['res/main_menu.mp3']);
 		//this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
 		//	+ lots of other required assets here
