@@ -36,7 +36,7 @@ Shapeshifter.Cucumber.prototype.update = function() {
         neighbour.kill(); // mark to kill in next process!
         if (neighbour === this.player) {
           this.player.deathBy = 'cucumber';
-          this.killedPlayer.play();
+          this.killedPlayer.play("",0,0.5);
         }
     } else {
       this.game.physics.arcade.moveToObject(this, neighbour, this.velocity);

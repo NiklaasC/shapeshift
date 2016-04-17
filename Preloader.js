@@ -19,12 +19,9 @@ Shapeshifter.Preloader.prototype = {
 		this.preloadBar = this.add.sprite(169, 120, 'preloaderBar');
 
 		//	This sets the preloadBar sprite as a loader sprite.
-		//	What that does is automatically crop the sprite from 0 to full-width
-		//	as the files below are loaded in.
 		this.load.setPreloadSprite(this.preloadBar);
 
 		//	Here we load the rest of the assets our game needs.
-		//	As this is just a Project Template I've not provided these assets, swap them for your own.
 		this.load.image('titlepage', 'res/title.png');
     this.load.spritesheet('entities', 'res/entities.png', 64, 64, 5);
     this.load.image('endgame', 'res/endgame.png');
@@ -48,8 +45,7 @@ Shapeshifter.Preloader.prototype = {
     this.load.audio('win', 'res/woo.wav');
     this.load.audio('death', 'res/slap.wav');
     
-		//this.load.audio('titleMusic', ['res/main_menu.mp3']);
-		//this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
+		this.load.audio('titleMusic', ['res/ldjam35-01.ogg', 'res/ldjam35-01.mp3']);
 		//	+ lots of other required assets here
 
 	},
@@ -72,11 +68,11 @@ Shapeshifter.Preloader.prototype = {
 		//	If you don't have any music in your game then put the game.state.start line into the create function and delete
 		//	the update function completely.
 		
-		//if (this.cache.isSoundDecoded('titleMusic') && this.ready == false)
-		//{
+		if (this.cache.isSoundDecoded('titleMusic') && this.ready == false)
+		{
 			this.ready = true;
 			this.state.start('MainMenu');
-		//}
+		}
 
 	}
 

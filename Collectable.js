@@ -24,7 +24,7 @@ Shapeshifter.Collectable.prototype.constructor = Shapeshifter.Collectable;
 Shapeshifter.Collectable.prototype.update = function() {
   if (this.game.physics.arcade.distanceBetween(this, this.player) < 32) {
     this.kill();
-    this.pickup.play();
+    this.pickup.play("",0,0.5);
     this.player.score += 1;
   }
   

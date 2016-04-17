@@ -14,7 +14,7 @@ Shapeshifter.MainMenu.prototype = {
 		//	We've already preloaded our assets, so let's kick right into the Main Menu itself.
 
 		this.music = this.add.audio('titleMusic');
-		this.music.play();
+		this.music.play("",0,0.5,true);
 
 		this.add.sprite(0, 0, 'titlepage');
     

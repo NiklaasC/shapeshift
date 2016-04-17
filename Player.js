@@ -73,6 +73,6 @@ Shapeshifter.Player.prototype.shapeshift = function () {
   var nextShift = this.game.rnd.integerInRange(3,5)
   this.game.time.events.add(Phaser.Timer.SECOND * nextShift, this.shapeshift, this);
   if (this.alive) {
-    this.shift.play();
+    this.shift.play("",0,0.5);
   }
 };

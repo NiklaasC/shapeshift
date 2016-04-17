@@ -40,7 +40,7 @@ Shapeshifter.Mouse.prototype.update = function() {
         neighbour.kill();
         if (neighbour === this.player) {
           this.player.deathBy = 'mouse';
-          this.killedPlayer.play();
+          this.killedPlayer.play("",0,0.5);
         }
     } else {
       this.game.physics.arcade.moveToObject(this, neighbour, this.velocity);

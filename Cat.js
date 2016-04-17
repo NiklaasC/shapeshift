@@ -36,7 +36,7 @@ Shapeshifter.Cat.prototype.update = function() {
         neighbour.kill();
         if (neighbour === this.player) {
           this.player.deathBy = 'cat';
-          this.killedPlayer.play();
+          this.killedPlayer.play("",0,0.5);
         }
     } else {
       this.game.physics.arcade.moveToObject(this, neighbour, this.velocity);

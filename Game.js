@@ -40,7 +40,8 @@ Shapeshifter.Game.prototype = {
         this.killNoise = this.game.add.audio('plip');
         this.failNoise = this.game.add.audio('failed');
         this.winNoise = this.game.add.audio('win');
-        
+        this.music = this.add.audio('titleMusic');
+        this.music.play("",0,0.5,true);
         
         this.gameState = 'preplay';
         // preplay, play, transition, gameover, gameinit
@@ -95,7 +96,7 @@ Shapeshifter.Game.prototype = {
         // Move anything near the player!
         for (var search = 0; search < this.entityGroup.length; search++) {
       		// if dead ... kill!
-          if (this.game.physics.arcade.distanceBetween(this.entityGroup.children[search], this.player) < 92) {
+          if (this.game.physics.arcade.distanceBetween(this.entityGroup.children[search], this.player) < 112) {
             // Recycle
             this.entityGroup.children[search].kill();
             this.spawn(this.entityGroup.children[search]);
@@ -113,13 +114,14 @@ Shapeshifter.Game.prototype = {
       		// if dead ... kill!
           if (this.entityGroup.children[search].alive === false) {
             // Recycle
-            this.killNoise.play();
+            this.killNoise.play("",0,0.5);
             this.spawn(this.entityGroup.children[search]);
           }
       	}
         if (this.player.score >= 10 && this.gameState === 'play') {
           // this.player.kill();
-          this.winNoise.play();
+          this.music.stop();
+          this.winNoise.play("",0,0.5);
           this.gameState = 'transition';
           this.game.add.tween(this.fader).to( { alpha: 0.8 }, 2000, Phaser.Easing.Linear.None, true, 0);
           this.game.time.events.add(Phaser.Timer.SECOND * 2, this.gameoverState, this);
@@ -129,7 +131,8 @@ Shapeshifter.Game.prototype = {
         }
         
         if ( this.player.alive === false && this.gameState === 'play') {
-          this.failNoise.play();
+          this.music.stop();
+          this.failNoise.play("",0,0.5);
           this.gameState = 'transition';
           this.game.add.tween(this.fader).to( { alpha: 0.8 }, 2000, Phaser.Easing.Linear.None, true, 0);
           this.game.add.tween(this.messageReplay).to( { y: 280 }, 2000, Phaser.Easing.Bounce.Out, true, 0);
@@ -163,7 +166,7 @@ Shapeshifter.Game.prototype = {
     spawn: function (entity) {
       entity.x = this.world.randomX;
       entity.y = this.world.randomY;
-      if (this.game.physics.arcade.distanceBetween(entity, this.player) < 64) {
+      if (this.game.physics.arcade.distanceBetween(entity, this.player) < 96) {
         this.spawn(entity);
       }
       entity.revive();
