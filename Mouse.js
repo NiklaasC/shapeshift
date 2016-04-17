@@ -14,6 +14,8 @@ Shapeshifter.Mouse = function(game, x, y, player, group) {
   this.group = group;
 	this.velocity = 75;
   //this.timeToPointer = 250;
+  
+  this.killedPlayer = this.game.add.audio('death');
 
 	//	Add this sprite to the game
 	// this.game.add.existing(this);
@@ -38,6 +40,7 @@ Shapeshifter.Mouse.prototype.update = function() {
         neighbour.kill();
         if (neighbour === this.player) {
           this.player.deathBy = 'mouse';
+          this.killedPlayer.play();
         }
     } else {
       this.game.physics.arcade.moveToObject(this, neighbour, this.velocity);

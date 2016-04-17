@@ -16,6 +16,7 @@ Shapeshifter.Cucumber = function(game, x, y, player, group) {
   this.currentStatus = 'go'; // Go ... wait ... go
   //this.timeToPointer = 250;
   
+  this.killedPlayer = this.game.add.audio('death');
   
   //	Add this sprite to the game
 	// this.game.add.existing(this);
@@ -35,6 +36,7 @@ Shapeshifter.Cucumber.prototype.update = function() {
         neighbour.kill(); // mark to kill in next process!
         if (neighbour === this.player) {
           this.player.deathBy = 'cucumber';
+          this.killedPlayer.play();
         }
     } else {
       this.game.physics.arcade.moveToObject(this, neighbour, this.velocity);
