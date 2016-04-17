@@ -15,6 +15,8 @@ Shapeshifter.Collectable = function(game, x, y, player, group, score) {
   
   //	Add this sprite to the game
   this.group.add(this);
+  
+  this.game.add.tween(this).to( { height: 80, width: 80 }, 1000, Phaser.Easing.Linear.None, true, 0, -1, true);
 };
 
 Shapeshifter.Collectable.prototype = Object.create(Phaser.Sprite.prototype);
@@ -24,6 +26,10 @@ Shapeshifter.Collectable.prototype.update = function() {
     this.kill();
     this.pickup.play("",0,0.5);
     this.player.score += 1;
+    // Reset and tween!
+    this.player.height = 64;
+    this.player.width = 64;
+    this.game.add.tween(this.player).to( { height: 80, width: 80 }, 100, Phaser.Easing.Linear.None, true, 0, 0, true);
   }
   
   if (this.alive === false) {

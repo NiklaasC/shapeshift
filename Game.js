@@ -6,7 +6,7 @@ Shapeshifter.Game = function (game) {
 
 Shapeshifter.Game.prototype = {
   create: function () {
-    this.add.sprite(0, 0, 'preloaderBackground');
+    this.add.sprite(0, 0, 'background');
     
     // 640, 360
     this.world.setBounds(-32, -32, 688, 408);
@@ -27,25 +27,13 @@ Shapeshifter.Game.prototype = {
     
     this.collectable = new Shapeshifter.Collectable(this.game, this.game.rnd.integerInRange(0, 640), this.game.rnd.integerInRange(0, 360), this.player,this.collectableGroup);
     
-    // HACKY HACKY HACKY
-    this.cucumber = new Shapeshifter.Cucumber(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.mouse = new Shapeshifter.Mouse(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cat = new Shapeshifter.Cat(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cucumber = new Shapeshifter.Cucumber(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.mouse = new Shapeshifter.Mouse(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cat = new Shapeshifter.Cat(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cucumber = new Shapeshifter.Cucumber(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.mouse = new Shapeshifter.Mouse(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cat = new Shapeshifter.Cat(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cucumber = new Shapeshifter.Cucumber(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.mouse = new Shapeshifter.Mouse(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cat = new Shapeshifter.Cat(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cucumber = new Shapeshifter.Cucumber(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.mouse = new Shapeshifter.Mouse(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cat = new Shapeshifter.Cat(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cucumber = new Shapeshifter.Cucumber(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.mouse = new Shapeshifter.Mouse(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
-    this.cat = new Shapeshifter.Cat(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
+    this.entity;
+    
+    for (var entitySpawner = 0; entitySpawner <= 6; entitySpawner += 1) {
+      this.entity = new Shapeshifter.Cucumber(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
+      this.entity = new Shapeshifter.Mouse(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
+      this.entity = new Shapeshifter.Cat(this.game, this.world.randomX,this.world.randomY, this.player, this.entityGroup);
+    }
     
     this.fader = this.add.sprite(0,0,'endgame');
     this.fader.alpha = 0.8;
@@ -83,6 +71,11 @@ Shapeshifter.Game.prototype = {
         // ... recycle
         this.killNoise.play("",0,0.5);
         this.spawn(this.entityGroup.children[search]);
+        // Make the revived sprite pop-in!
+        this.entityGroup.children[search].height = 16;
+        this.entityGroup.children[search].width = 16;
+        
+        this.game.add.tween(this.entityGroup.children[search]).to( { height: 64, width: 64 }, 100, Phaser.Easing.Linear.None, true, 0);
       }
     }
     if (this.player.score >= 10 && this.gameState === 'play') {

@@ -17,6 +17,11 @@ Shapeshifter.Cat = function(game, x, y, player, group) {
   
   //  Add it to the group!
   this.group.add(this);
+  
+  this.height = 16;
+  this.width = 16;
+  
+  this.game.add.tween(this).to( { height: 64, width: 64 }, 100, Phaser.Easing.Linear.None, true, 0);
 };
 
 Shapeshifter.Cat.prototype = Object.create(Phaser.Sprite.prototype);

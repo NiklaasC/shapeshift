@@ -17,6 +17,11 @@ Shapeshifter.Cucumber = function(game, x, y, player, group) {
 
   //  Add it to the group!
   this.group.add(this);
+  
+  this.height = 16;
+  this.width = 16;
+  
+  this.game.add.tween(this).to( { height: 64, width: 64 }, 100, Phaser.Easing.Linear.None, true, 0);
 };
 
 Shapeshifter.Cucumber.prototype = Object.create(Phaser.Sprite.prototype);
@@ -65,12 +70,10 @@ Shapeshifter.Cucumber.prototype.closestNeighbour = function (callee, group, play
       }
 		}
   }
-  
   // Remember to check Player!
   if (this.game.physics.arcade.distanceBetween(this, player) < closestDistance && player.alive) {
     closestDistance = distance;
     closest = player;
   }
-  
   return closest;
 };

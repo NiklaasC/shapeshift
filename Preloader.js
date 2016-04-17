@@ -18,6 +18,9 @@ Shapeshifter.Preloader.prototype = {
 		this.load.setPreloadSprite(this.preloadBar);
 
 		//	Here we load the rest of the assets our game needs.
+    this.load.image('background', 'res/background.png');
+    this.load.image('logo', 'res/shapeshift_logo.png');
+    this.load.image('mediumShape', 'res/shape_medium.png');
 		this.load.image('titlepage', 'res/title.png');
     this.load.spritesheet('entities', 'res/entities.png', 64, 64, 5);
     this.load.image('endgame', 'res/endgame.png');

@@ -60,6 +60,10 @@ Shapeshifter.Player.prototype.shapeshift = function () {
       this.species = "shapeshifter";
       this.frame = 3;
   }
+  // Reset to original size before tween to prevent tweens colliding and taking a new initial height/width and getting stuck big!
+  this.height = 64;
+  this.width = 64;
+  this.game.add.tween(this).to( { height: 80, width: 80 }, 100, Phaser.Easing.Linear.None, true, 0, 0, true);
   var nextShift = this.game.rnd.integerInRange(3,5)
   this.game.time.events.add(Phaser.Timer.SECOND * nextShift, this.shapeshift, this);
   if (this.alive) {
